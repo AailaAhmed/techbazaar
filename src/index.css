@@ -1,1 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Roboto+slab:wght@400;500;700&display=swap');
+body {
+  font-family: 'Roboto Slab';
+}
