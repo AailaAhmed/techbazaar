@@ -75,6 +75,7 @@ function Home(){
                              
                               <ProductCard
                                 key={product.id}
+                                id={product.id}
                                 image={product.thumbnail}
                                 title={product.title}
                                 pricing={product.price}
@@ -100,6 +101,7 @@ function Home(){
                             {bestSellers.map((product)=> (
                                 <ProductCard 
                                   key={product.id}
+                                  id={product.id}
                                   image={product.thumbnail}
                                   title={product.title}
                                   rating={product.rating}

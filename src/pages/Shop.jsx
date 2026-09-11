@@ -1,6 +1,7 @@
 import { useState,useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import { getAllProducts } from "../services/productService";
+import { Link } from "react-router-dom";
 
 function Shop(){
     const [products,setProducts]=useState([]);
@@ -27,9 +28,9 @@ function Shop(){
 
     return (
         <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-
             <div className="mb-4">
-                <h1 className="text-3xl font-bold text-[#0D0D7B]">Shop</h1>
+               
+                <h1 className="text-3xl font-bold text-[#0D0D7B]"> <Link to="/" className="text-xl">← </Link> Shop</h1>
                 <p className="mt-4 text-lg text-gray-600">Explore our latest products</p>
             </div>
 
@@ -56,6 +57,7 @@ function Shop(){
                     {products.map((product)=> (
                         <ProductCard 
                           key={product.id}
+                          id={product.id}
                           image={product.thumbnail}
                           title={product.title}
                           pricing={product.price}

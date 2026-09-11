@@ -5,6 +5,13 @@ export async function getAllProducts(limit=50,skip=0) {
     return result.json();
 }
 
+export async function getProductById(id) {
+    const result =await fetch(`${BASE_URL}/products/${id}`);
+    if (!result.ok) throw new Error("Failed to fetch products");
+    return result.json();
+    
+}
+
 export async function getProductsByCategory(category) {
     const result=await fetch(`${BASE_URL}/products/category/${category}`);
     if (!result.ok) throw new Error("Failed to fetch category products");
