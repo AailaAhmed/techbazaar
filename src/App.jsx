@@ -5,18 +5,21 @@ import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetails from './pages/ProductDetails';
 import Wishlist from './pages/wishlist';
+import Cart from './pages/Cart';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { CartProvider } from './context/cartContext';
 function App() {
   
   return (
     
     <BrowserRouter>
-     <div className='min-h-screen flex flex-col'>
-      <Navbar />
+     <CartProvider>
+      <div className='min-h-screen flex flex-col'>
+        <Navbar />
       
-     <main className='flex-1'>
-      <Routes>
+        <main className='flex-1'>
+          <Routes>
 
             <Route path="/" element={<Home />} />
 
@@ -26,13 +29,14 @@ function App() {
 
             <Route path="/wishlist" element={<Wishlist />} />
 
+            <Route path="/cart" element={<Cart/>}/>
+
           </Routes>
-     </main>
-     
-      
-      <Footer />
+        </main>
+        <Footer />
       </div>
-     </BrowserRouter>
+     </CartProvider>
+    </BrowserRouter>
   )
 }
 export default App;

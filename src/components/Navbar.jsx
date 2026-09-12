@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/cartContext";
 
 function Navbar()
 {
     const[isMenuOpen,setIsMenuOpen]=useState(false);
+    const { cartCount } = useCart();
     return(
        <nav className="bg-white border-b border-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -11,7 +13,7 @@ function Navbar()
 
                 {/* logo/ store name */}
                 <div className="flex-shrink-0 mt-4">
-                    <Link to="/" className="text-2xl font-bold text-gray-900">TechBazaar</Link>
+                    <Link to="/" className="text-2xl font-bold text-[#0D0D7B]">TechBazaar</Link>
                 </div>
 
                 {/* desktop navigation*/}
@@ -19,14 +21,14 @@ function Navbar()
                     <Link to="/" className="text-gray-700 hover:text-[#436EDF] transition">HOME</Link>
                     <Link to="/shop" className="text-gray-700 hover:text-[#436EDF] transition">SHOP</Link>
                     <Link to="/wishlist" className="text-gray-700 hover:text-[#436EDF] transition">WISHLIST</Link>
-                    {/* cart */}
-                    <Link to="/cart" className="relative text-gray-700 hover:text-[#436EDF] transition">CART
+               
                     {/*static count*/}
-                    <span className="absolute -top-2 -right-4 bg-[#436EDF] text-white text-xs font-bold rounded-full w-5 h-5 items-center justify-center">2</span>
-                    </Link>
+                    <Link to="/cart" className="relative text-gray-700 hover:text-[#436EDF] transition"> CART {cartCount > 0 && <span className="absolute -top-2 -right-4 bg-[#436EDF] text-white text-xs font-bold rounded-full w-5 h-5 flex justify-center">{cartCount}</span>}</Link> 
+            
                 </div>
                 {/*Mobile hamburger */}
-                <button onClick={()=> setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-700 hover:text-[#436EDF] focus:outline-none" aria-label="Toggle menue">
+                <Link to="/cart" className="md:hidden px-4 ml-auto flex items-center text-xs">🛒 {cartCount>0 && <span className="mb-4 px-1 text-bold">{cartCount}</span> }</Link>
+                <button onClick={()=> setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-700 text-xl hover:text-[#436EDF] focus:outline-none" aria-label="Toggle menue">
                     ☰
                 </button>
                 
@@ -39,7 +41,7 @@ function Navbar()
                         <Link to="/" className="text-gray-700 hover:text-[#436EDF] py-2">HOME</Link>
                         <Link to="/shop" className="text-gray-700 hover:text-[#436EDF] py-2">SHOP</Link>
                         <Link to="/wishlist" className="text-gray-700 hover:text-[#436EDF] py-2">WISHLIST</Link>
-                        <Link to="/cart" className="text-gray-700 hover:text-[#436EDF] py-2">Cart (2)</Link>
+                        <Link to="/cart" className="text-gray-700 hover:text-[#436EDF] py-2">CART </Link>
                     </div>
                 </div>)}
 
