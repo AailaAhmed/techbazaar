@@ -1,5 +1,7 @@
 import { useState,useEffect } from "react";
-import { getCart } from "../utils/cart";
+import { useNavigate } from "react-router-dom";
+import { getCart,clearCart } from "../utils/cart";
+import { useCart } from "../context/cartContext";
 
 function Checkout(){
     const[items,setItems]=useState([]);
@@ -69,21 +71,32 @@ function Checkout(){
     const total= items.reduce((sum,item) => sum + item.price * item.quantity,0);
     const shipping=200;
     const grandTotal=total + shipping;
-
+    
+    const navigate=useNavigate();
+    const {refreshCartCount}=useCart();
     function handleSubmit(e){
         e.preventDefault();
         const newErrors=validateForm();
         setErrors(newErrors);
 
         if(Object.keys(newErrors).length===0){
-            console.log("form is valid, order data:",formData);
+            clearCart();
+            refreshCartCount();
+            navigate("/order-success",{
+                state: {
+                    total: grandTotal,
+                    customerName: `${formData.firstName} ${formData.lastName}`,
+                    phone: formData.phone,
+                    address: formData.address,
+                    postalCode: formData.postalCode,
+                },
+            });
         }
-        console.log("Form submitted:", formData);
     }
    
     return(
 
-         <form onSubmit={handleSubmit} noValidate className="max-w-7xl mx-auto">
+         <form onSubmit={handleSubmit} noValidate className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mt-4">
               <span className="text-lg font-bold">Total: </span> <span>Rs. {total}</span>
             </div>
@@ -203,7 +216,7 @@ function Checkout(){
                 <p>Shipping: Rs. {shipping}</p>
                 <p className="font-bold mt-2">Total: Rs. {grandTotal}</p>
             </div>
-            <div className="px-130">
+            <div className="flex items-center justify-center">
              <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-[#F8FAE5] rounded-lg py-2.5 px-4 mt-4 mb-4">Complete Order</button>
             </div>
 

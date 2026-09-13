@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cartContext";
+import { ShoppingCartIcon } from "lucide-react";
 
 function Navbar()
 {
@@ -8,7 +9,7 @@ function Navbar()
     const { cartCount } = useCart();
     return(
        <nav className="bg-white border-b border-gray">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-centre justify-between h-16">
 
                 {/* logo/ store name */}
@@ -27,7 +28,7 @@ function Navbar()
             
                 </div>
                 {/*Mobile hamburger */}
-                <Link to="/cart" className="md:hidden px-4 ml-auto flex items-center text-xs">🛒 {cartCount>0 && <span className="mb-4 px-1 text-bold">{cartCount}</span> }</Link>
+                <Link to="/cart" className="md:hidden px-4 ml-auto flex items-center mt-2"><ShoppingCartIcon size={15}/> {cartCount>0 && <span className="mb-4 text-xs px-1 text-bold">{cartCount}</span> }</Link>
                 <button onClick={()=> setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-700 text-xl hover:text-[#436EDF] focus:outline-none" aria-label="Toggle menue">
                     ☰
                 </button>

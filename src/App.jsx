@@ -10,6 +10,7 @@ import Checkout from './pages/Checkout';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/cartContext';
+import OrderSuccess from './pages/orderSuccess';
 function App() {
   
   return (
@@ -33,6 +34,8 @@ function App() {
             <Route path="/cart" element={<Cart/>}/>
 
             <Route path="/checkout" element={<Checkout/>}/>
+
+            <Route path="/order-success" element={<OrderSuccess/>} />
 
           </Routes>
         </main>

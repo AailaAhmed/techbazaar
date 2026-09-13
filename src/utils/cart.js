@@ -47,3 +47,7 @@ export function getCartCount() {
     return getCart().reduce((sum,item)=> sum + item.quantity,0);
     
 }
+
+export function clearCart(){
+    localStorage.removeItem(CART_KEY);
+}
