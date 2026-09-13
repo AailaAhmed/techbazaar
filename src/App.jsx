@@ -6,6 +6,7 @@ import Shop from './pages/Shop';
 import ProductDetails from './pages/ProductDetails';
 import Wishlist from './pages/wishlist';
 import Cart from './pages/Cart';
+import Checkout from './pages/Checkout';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/cartContext';
@@ -30,6 +31,8 @@ function App() {
             <Route path="/wishlist" element={<Wishlist />} />
 
             <Route path="/cart" element={<Cart/>}/>
+
+            <Route path="/checkout" element={<Checkout/>}/>
 
           </Routes>
         </main>

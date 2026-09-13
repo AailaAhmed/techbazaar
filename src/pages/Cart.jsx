@@ -101,12 +101,11 @@ function Cart(){
               <span>Total</span>
               <span>Rs. {total.toFixed(2)}</span>
             </div>
-            <button
-              type="button"
-              className="bg-[#436EDF] w-full mt-6 py-3 text-[#F8FAE5] rounded-lg font-semibold hover:bg-[#2f52b0] transition"
-            >
+            <Link to="/checkout">
+             <button type="button" className="bg-[#436EDF] w-full mt-6 py-3 text-[#F8FAE5] rounded-lg font-semibold hover:bg-[#2f52b0] transition">
               Proceed to Checkout
-            </button>
+             </button>
+            </Link>
           </div>
         </div>
       )}
