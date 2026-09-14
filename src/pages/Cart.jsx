@@ -4,6 +4,7 @@ import ProductCard from "../components/ProductCard";
 import { getCart,removeFromCart,updateQuantity,getCartTotal } from "../utils/cart";
 import { useCart } from "../context/cartContext";
 
+
 function Cart(){
     const[items,setItems]=useState([]);
     const { refreshCartCount } = useCart();
@@ -55,7 +56,7 @@ function Cart(){
                 />
 
                 <div className="flex-1">
-                  <h3 className="font-semibold text-[#0D0D7B]">{item.title}</h3>
+                  <Link to={`/product/${item.id}`}><h3 className="font-semibold text-[#0D0D7B]">{item.title}</h3></Link>
                   <p className="text-sm text-gray-600">Rs. {item.price}</p>
 
                   <div className="flex items-center gap-2 mt-2">

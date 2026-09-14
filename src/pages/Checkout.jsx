@@ -217,7 +217,7 @@ function Checkout(){
                 <p className="font-bold mt-2">Total: Rs. {grandTotal}</p>
             </div>
             <div className="flex items-center justify-center">
-             <button type="submit" className="bg-blue-600 hover:bg-blue-700 text-[#F8FAE5] rounded-lg py-2.5 px-4 mt-4 mb-4">Complete Order</button>
+             <button type="submit" className="bg-[#436EDF] hover:bg-[#2f52b0] text-[#F8FAE5] rounded-lg py-2.5 px-4 mt-4 mb-4">Complete Order</button>
             </div>
 
             

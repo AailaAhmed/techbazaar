@@ -1,12 +1,19 @@
 import { useState,useEffect } from "react";
 import ProductCard from "../components/ProductCard";
-import { getAllProducts } from "../services/productService";
+import { getProductsByCategory} from "../services/productService";
 import { Link } from "react-router-dom";
 
+const categories=[
+                {name:"Smartphones" ,value:"smartphones"},
+                {name:"Laptops" ,value:"laptops"},
+                {name:"Tablets" ,value:"tablets"},
+                {name:"Accessories" ,value:"mobile-accessories"},
+            ];
 
 function Home(){
     const[featured,setFeatured]=useState([]);
     const[bestSellers,setBestSellers]=useState([]);
+    const[flashSale, setFlashSale] = useState([]);
     const[loading,setLoading]=useState(true);
     const[error,setError]=useState("");
     
@@ -16,13 +23,31 @@ function Home(){
         try {
             setLoading(true);
             setError("");
-            const data=await getAllProducts(50,0);
-            const products=data.products;
-            setFeatured(products.slice(0,4));
+
+            const[phones, laptops,tablets, accssories] =await Promise.all ([
+                getProductsByCategory("smartphones"),
+                getProductsByCategory("laptops"),
+                getProductsByCategory("tablets"),
+                getProductsByCategory("mobile-accessories"),
+            
+            ]);
+            
+            const allProducts=[
+                ...phones.products,
+                ...laptops.products,
+                ...tablets.products,
+                ...accssories.products,
+            
+            ];
+        
+            setFeatured(allProducts.slice(0,4));
 
 
-            const topRated=products.filter((p)=>p.rating>=4.5).slice(0,4);
+            const topRated=allProducts.filter((p)=>p.rating>=4.5).slice(0,4);
             setBestSellers(topRated);
+
+            const onSale = allProducts.filter((p) => p.discountPercentage > 10).slice(0, 4);
+            setFlashSale(onSale)
             
         } catch (err) {
             setError("Failed to load products.")
@@ -50,17 +75,22 @@ function Home(){
                 </div>
             </section>
 
-            <section className="py-16">
+            <section className="py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl font-bold text-gray-900">
-                        Categories
-                    </h2>
+                    <h2 className="text-xl font-bold text-gray-900">Categories</h2>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+                        {categories.map((cat)=>(
+                            <Link key={cat.value} to={`/shop?category=${cat.value}`} className="bg-gray-100 mt-4 rounded-xl p-4 text-center hover:bg-gray-200 transition"> 
+                               <p className="font-semibold text-[#0D0D7B]">{cat.name}</p>
+                            </Link>
+                        ))}
+                    </div>    
                 </div>
             </section>
 
             <section className="py-16 bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">
                         Featured Products
                     </h2>
                     {loading && 
@@ -70,7 +100,7 @@ function Home(){
                         <p>{error}</p>
                     }
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
                             {featured.map((product)=> (
                              
                               <ProductCard
@@ -91,13 +121,13 @@ function Home(){
 
             <section className="py-16">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">
                         Best Sellers
                     </h2>
                     {loading && <p>Loading...</p>}
                     {!loading && error && <p>{error}</p>}
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
                             {bestSellers.map((product)=> (
                                 <ProductCard 
                                   key={product.id}
@@ -116,17 +146,24 @@ function Home(){
 
             <section className="py-16 bg-gradient-to-r from-[#436EDF] to-blue-200 text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl font-bold text-gray-900">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">
                         Flash Sale
                     </h2>
-                </div>
-            </section>
-
-            <section className="py-16 bg-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl font-bold text-gray-900">
-                        Newsletter
-                    </h2>
+                    {!loading && !error && (
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+                            {flashSale.map((product)=>(
+                                <ProductCard
+                                  key={product.id}
+                                  id={product.id}
+                                  image={product.thumbnail}
+                                  title={product.title}
+                                  rating={product.rating}
+                                  pricing={product.price}
+                                 
+                                />
+                            ))}
+                        </div>
+                    )}
                 </div>
             </section>
         

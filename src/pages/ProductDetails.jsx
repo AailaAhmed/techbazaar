@@ -1,7 +1,6 @@
 import { useState,useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams,Link } from "react-router-dom";
 import { getProductById } from "../services/productService";
-import { Link } from "react-router-dom";
 import { addToCart } from "../utils/cart";
 import { useCart } from "../context/cartContext";
 
@@ -31,12 +30,12 @@ function ProductDetails(){
     },[id]);
 
 const[showMessage,setShowMessage]=useState(false);
-function handleAddToCart(e) {
-  e.preventDefault();
-  addToCart({ id:product.id,
-              image:product.thumnail, 
+function handleAddToCart() {
+  addToCart({ 
+              id:product.id,
+              thumbnail:product.thumbnail, 
               title: product.title, 
-              pricing:product.price, 
+              price:product.price, 
               rating:product.rating, });
   refreshCartCount();
   setShowMessage(true);
@@ -54,17 +53,17 @@ function handleAddToCart(e) {
                 <div className="text-[#0D0D7B]">
                     <Link to="/shop"><p className="text-xl">←</p></Link>
                     <div className="flex justify-center">
-                        <img src={product.thumbnail} />
+                        <img src={product.thumbnail} alt={product.title} className="max-h-96 w-full object-contain rounded-lg mx-auto"/>
                     </div>
                   
-                  <div className="py-2">
+                  <div className="mt-8">
                     <p className="text-lg ">{product.title}</p>
 
                     <div className="py-3">
                      <span className="text-yellow-500">★ <span className="text-[#0D0D7B]">{product.rating}</span></span><br/> 
                      <span >Rs. {product.price}</span>
                     </div>
-                    <button type="button" onClick={handleAddToCart} className="bg-[#436EDF] w-full mt-auto py-2.5 text-[#F8FAE5] rounded-lg font-semibold hover:bg-gray-700 transition ">Add to Cart</button>
+                    <button type="button" onClick={handleAddToCart} className="bg-[#436EDF] w-full mt-auto py-2.5 text-[#F8FAE5] rounded-lg font-semibold hover:bg-[#2f52b0] transition ">Add to Cart</button>
                     {showMessage && <p className="text-xs text-center text-green-600">Added To Cart!</p>}
 
                     <p className="py-1"> <span className="font-bold text-lg" >Category: </span><span className="text-sm">{product.category}</span></p>

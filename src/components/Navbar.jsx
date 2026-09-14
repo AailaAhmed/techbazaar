@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useCart } from "../context/cartContext";
 import { ShoppingCartIcon } from "lucide-react";
 
+
 function Navbar()
 {
     const[isMenuOpen,setIsMenuOpen]=useState(false);
@@ -30,7 +31,7 @@ function Navbar()
                 {/*Mobile hamburger */}
                 <Link to="/cart" className="md:hidden px-4 ml-auto flex items-center mt-2"><ShoppingCartIcon size={15}/> {cartCount>0 && <span className="mb-4 text-xs px-1 text-bold">{cartCount}</span> }</Link>
                 <button onClick={()=> setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-700 text-xl hover:text-[#436EDF] focus:outline-none" aria-label="Toggle menue">
-                    ☰
+                    ☰ 
                 </button>
                 
             </div>
