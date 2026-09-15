@@ -38,7 +38,7 @@ function handleAddToCart(e){
             <div>
                 <button type="button" onClick={wishlistToggle} className="text-lg px-3 mt-2"> {wishlisted?<HeartIcon size={18} color="red"/>:<HeartIcon size={18}/>} </button>
             </div>
-            <div className="h-44 overflow-hidden">
+            <div className="h-44 overflow-hidden sm:h-28">
                <Link to={`/product/${id}`}><img src={image} alt={title} className="w-full h-full object-contain" /></Link> 
             </div>
 
