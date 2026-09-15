@@ -11,7 +11,7 @@ function Navbar()
     return(
        <nav className="bg-white border-b border-gray">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex items-centre justify-between h-16">
+            <div className="flex items-center justify-between h-16">
 
                 {/* logo/ store name */}
                 <div className="flex-shrink-0 mt-4">
@@ -19,13 +19,11 @@ function Navbar()
                 </div>
 
                 {/* desktop navigation*/}
-                <div className="hidden md:flex items-centre gap-8 mt-5 text-sm">
+                <div className="hidden md:flex items-center gap-8 mt-5 text-sm">
                     <Link to="/" className="text-gray-700 hover:text-[#436EDF] transition">HOME</Link>
                     <Link to="/shop" className="text-gray-700 hover:text-[#436EDF] transition">SHOP</Link>
                     <Link to="/wishlist" className="text-gray-700 hover:text-[#436EDF] transition">WISHLIST</Link>
-               
-                    {/*static count*/}
-                    <Link to="/cart" className="relative text-gray-700 hover:text-[#436EDF] transition"> CART {cartCount > 0 && <span className="absolute -top-2 -right-4 bg-[#436EDF] text-white text-xs font-bold rounded-full w-5 h-5 flex justify-center">{cartCount}</span>}</Link> 
+                    <Link to="/cart" className="relative text-gray-700 hover:text-[#436EDF] transition"> CART {cartCount > 0 && <span className="absolute -top-2 -right-4 bg-[#436EDF] text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">{cartCount}</span>}</Link> 
             
                 </div>
                 {/*Mobile hamburger */}

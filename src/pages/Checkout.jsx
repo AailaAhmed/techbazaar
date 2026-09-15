@@ -85,6 +85,7 @@ function Checkout(){
             navigate("/order-success",{
                 state: {
                     total: grandTotal,
+                    email: formData.email,
                     customerName: `${formData.firstName} ${formData.lastName}`,
                     phone: formData.phone,
                     address: formData.address,

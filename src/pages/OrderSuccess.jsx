@@ -24,10 +24,11 @@ function OrderSuccess(){
              <p className="text-lg font-bold">Total: <span className="font-medium">Rs. {order.total}</span></p>
              
             </div>
-            <p className="text-xl font-bold mt-8">Order Summary</p>
+            <p className="text-xl font-bold mt-8 mb-4">Order Summary</p>
 
-            <div>
+            <div className="bg-gray-100 rounded-lg px-2 w-full py-4">
                 <p className="mb-2 mt-2">{order.customerName}</p>
+                <p className="mb-2">{order.email}</p>
                 <p className="mb-2">{order.phone}</p>
                 <p className="mb-2">{order.address}</p>
                 <p className="mb-2">{order.postalCode}</p>
