@@ -83,9 +83,9 @@ function Shop(){
                 <select 
                  value={category}
                  onChange={handleCategoryChange}
-                 className="border border-gray-300 rounded-lg w-full px-2 text-sm"
+                 className="border border-gray-300 rounded-lg w-full"
                 >
-                    <option value="all">All Categories</option>
+                    <option value="all">Categories</option>
                     <option value="smartphones">Smartphones</option>
                     <option value="laptops">Laptops</option>
                     <option value="tablets">Tablets</option>
@@ -96,7 +96,7 @@ function Shop(){
                 <select 
                  value={sortBy}
                  onChange={(e)=> setSortBy(e.target.value)}
-                 className="border border-gray-300 rounded-lg w-full px-2 text-sm"
+                 className="border border-gray-300 rounded-lg w-full"
                  >
                     <option value="default">Sort by</option>
                     <option value="price-low">Price: Low to High</option>
