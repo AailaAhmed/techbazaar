@@ -75,12 +75,12 @@ function Home(){
                 </div>
             </section>
 
-            <section className="py-4">
+            <section className="py-2 sm:py-4">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-xl font-bold text-gray-900">Categories</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-6 lg:gap-8 mt-2 qm:mt-4">
                         {categories.map((cat)=>(
-                            <Link key={cat.value} to={`/shop?category=${cat.value}`} className="bg-gray-100 text-sm mt-4 rounded-xl p-2 sm:p-2 text-center hover:bg-gray-200 transition"> 
+                            <Link key={cat.value} to={`/shop?category=${cat.value}`} className="bg-gray-100 text-sm mt-4 rounded-lg sm:rounded-xl p-2.5 sm:p-4 text-center hover:bg-gray-200 transition"> 
                                <p className="font-semibold text-[#0D0D7B]">{cat.name}</p>
                             </Link>
                         ))}

@@ -24,8 +24,8 @@ function Footer(){
             </div>
          </div>
 
-         <div className="border-t border-gray-700 mt-10 pt-6 text-center sm:text-xs">
-            <p>© 2026 TechBazaar. All rights reserved.</p>
+         <div className="border-t border-gray-700 mt-10 pt-6 text-center">
+            <p className="sm:text-xs">© 2026 TechBazaar. All rights reserved.</p>
 
          </div>
        </footer>
