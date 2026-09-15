@@ -52,11 +52,11 @@ function handleAddToCart() {
             {!loading && !error && product && (
                 <div className="text-[#0D0D7B]">
                     <Link to="/shop"><p className="text-xl">←</p></Link>
-                    <div className="flex justify-center">
+                    <div className="flex justify-center sm:mt-2">
                         <img src={product.thumbnail} alt={product.title} className="max-h-96 w-full object-contain rounded-lg mx-auto"/>
                     </div>
                   
-                  <div className="mt-8">
+                  <div className="mt-8 sm:mt-4">
                     <p className="text-lg ">{product.title}</p>
 
                     <div className="py-3">

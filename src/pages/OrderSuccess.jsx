@@ -18,7 +18,7 @@ function OrderSuccess(){
     return(
         <div className="max-w-7xl mx-auto mb-4 px-4 sm:px-6 lg:px-8 py-12">
             <div className="bg-gray-100 rounded-lg w-full py-4 px-2">
-             <p className="font-bold text-3xl text-[#0D0D7B]">Order Placed Successfully </p>
+             <p className="font-bold text-3xl text-[#0D0D7B] sm:text-xl">Order Placed Successfully </p>
              <p className="text-gray-600 mb-2">Thank you for shopping with TechBazaar</p>
              <p className="mt-6 text-lg font-bold" >Order#  <span className="font-medium">{Math.floor(Date.now()/1000)}</span></p>
              <p className="text-lg font-bold">Total: <span className="font-medium">Rs. {order.total}</span></p>

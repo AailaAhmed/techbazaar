@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useCart } from "../context/cartContext";
-import { ShoppingCartIcon } from "lucide-react";
+import { MenuIcon, ShoppingCartIcon } from "lucide-react";
 
 
 function Navbar()
@@ -15,7 +15,7 @@ function Navbar()
 
                 {/* logo/ store name */}
                 <div className="flex-shrink-0 mt-4">
-                    <Link to="/" className="text-2xl font-bold text-[#0D0D7B]">TechBazaar</Link>
+                    <Link to="/" className="text-2xl font-bold text-[#0D0D7B] sm:text-xl">TechBazaar</Link>
                 </div>
 
                 {/* desktop navigation*/}
@@ -27,9 +27,9 @@ function Navbar()
             
                 </div>
                 {/*Mobile hamburger */}
-                <Link to="/cart" className="md:hidden px-4 ml-auto flex items-center mt-2"><ShoppingCartIcon size={15}/> {cartCount>0 && <span className="mb-4 text-xs px-1 text-bold">{cartCount}</span> }</Link>
-                <button onClick={()=> setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-700 text-xl hover:text-[#436EDF] focus:outline-none" aria-label="Toggle menue">
-                    ☰ 
+                <Link to="/cart" className="md:hidden px-5 ml-auto flex items-center mt-6"><ShoppingCartIcon size={15}/> {cartCount>0 && <span className="mb-4 text-xs px-1 text-bold">{cartCount}</span> }</Link>
+                <button onClick={()=> setIsMenuOpen(!isMenuOpen)} className="md:hidden text-gray-700 mt-6 text-xl hover:text-[#436EDF] focus:outline-none" aria-label="Toggle menue">
+                    <MenuIcon size={15}/>
                 </button>
                 
             </div>
