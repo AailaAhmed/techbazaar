@@ -24,7 +24,7 @@ function Footer(){
             </div>
          </div>
 
-         <div className="border-t border-gray-700 mt-10 pt-6 text-center">
+         <div className="border-t border-gray-700 mt-10 pt-6 text-center sm:text-sm">
             <p>© 2026 TechBazaar. All rights reserved.</p>
 
          </div>
