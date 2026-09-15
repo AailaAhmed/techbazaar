@@ -16,7 +16,7 @@ function Wishlist() {
   }, []);
 
   return (
-    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         
       <h1 className="text-3xl font-bold text-[#0D0D7B] mb-8"><Link to="/shop" className="text-xl">← </Link> My Wishlist</h1>
 

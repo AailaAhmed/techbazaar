@@ -38,11 +38,11 @@ function handleAddToCart(e){
             <div>
                 <button type="button" onClick={wishlistToggle} className="text-lg px-3 mt-2"> {wishlisted?<HeartIcon size={18} color="red"/>:<HeartIcon size={18}/>} </button>
             </div>
-            <div className="sm:h-64 lg:h-56 overflow-hidden">
+            <div className="h-56 overflow-hidden">
                <Link to={`/product/${id}`}><img src={image} alt={title} className="w-full h-full object-contain" /></Link> 
             </div>
 
-            <div className="p-2 flex flex-col flex-1 bg-gray-100">
+            <div className="p-1.5 flex flex-col flex-1 bg-gray-100">
                 <h3 className="text-sm font-semibold text-[#0D0D7B] line-clamp-2 min-h-[2rem]">{title}</h3>
                 <div className="flex items-center gap-2">
                     <span className="text-yellow-500">★</span>
@@ -51,7 +51,7 @@ function handleAddToCart(e){
 
                 <p className="text-sm font-bold text-[#0D0D7B] mt-auto">Rs. {pricing}</p>
 
-               <button type="button" onClick={handleAddToCart} className="bg-[#436EDF] w-full mt-auto py-2.5 text-[#F8FAE5] rounded-lg font-semibold hover:bg-[#2f52b0] transition ">Add to Cart</button>
+               <button type="button" onClick={handleAddToCart} className="bg-[#436EDF] w-full mt-auto py-2 text-[#F8FAE5] rounded-lg font-semibold hover:bg-[#2f52b0] transition ">Add to Cart</button>
                {showMessage && <p className="text-xs text-green-600 text-center">Added To Cart!</p>}
             </div>
         </div>

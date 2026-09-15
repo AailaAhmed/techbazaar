@@ -64,7 +64,7 @@ function Shop(){
     }
 
     return (
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
             <div className="mb-4">
                
                 <h1 className="text-3xl font-bold text-[#0D0D7B]"> <Link to="/" className="text-xl">← </Link> Shop</h1>
@@ -83,7 +83,7 @@ function Shop(){
                 <select 
                  value={category}
                  onChange={handleCategoryChange}
-                 className="border border-gray-300 rounded-lg w-full py-2"
+                 className="border border-gray-300 rounded-lg w-full py-2 sm:px-2"
                 >
                     <option value="all">All Categories</option>
                     <option value="smartphones">Smartphones</option>
@@ -96,7 +96,7 @@ function Shop(){
                 <select 
                  value={sortBy}
                  onChange={(e)=> setSortBy(e.target.value)}
-                 className="border border-gray-300 rounded-lg w-full py-2"
+                 className="border border-gray-300 rounded-lg w-full py-2 sm:px-2"
                  >
                     <option value="default">Sort by</option>
                     <option value="price-low">Price: Low to High</option>
