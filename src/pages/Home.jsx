@@ -77,7 +77,7 @@ function Home(){
 
             <section className="py-6">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">Categories</h2>
+                    <h2 className="text-xl font-bold text-gray-900">Categories</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                         {categories.map((cat)=>(
                             <Link key={cat.value} to={`/shop?category=${cat.value}`} className="bg-gray-100 text-sm mt-4 rounded-xl p-2 sm:p-2 text-center hover:bg-gray-200 transition"> 
@@ -90,7 +90,7 @@ function Home(){
 
             <section className="py-8 mt-2 bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">
                         Featured Products
                     </h2>
                     {loading && 
@@ -121,7 +121,7 @@ function Home(){
 
             <section className="py-8">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">
                         Best Sellers
                     </h2>
                     {loading && <p>Loading...</p>}
@@ -146,7 +146,7 @@ function Home(){
 
             <section className="py-8 bg-gradient-to-r from-[#436EDF] to-blue-200 text-white">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <h2 className="text-xl sm:text-3xl font-bold text-gray-900 mb-4">
+                    <h2 className="text-xl font-bold text-gray-900 mb-4">
                         Flash Sale
                     </h2>
                     {!loading && !error && (
