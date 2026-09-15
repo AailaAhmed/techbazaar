@@ -71,21 +71,21 @@ function Shop(){
                 <p className="mt-4 text-lg text-gray-600">Explore our latest products</p>
             </div>
 
-            <div className="grid grid-cols-3 gap-4 mt-6 mb-8 text-sm">
+            
                 <input 
                  type="text" 
                  placeholder="Search"
                  value={searchTerm}
                  onChange={(e)=> setSearchTerm(e.target.value)}
-                 className="border border-gray-300 rounded-lg px-2 w-full"
+                 className="border border-gray-300 rounded-lg px-2 w-full text-sm"
                 />
-
+            <div className="grid grid-cols-2 gap-4 mt-6 mb-8 text-sm">
                 <select 
                  value={category}
                  onChange={handleCategoryChange}
                  className="border border-gray-300 rounded-lg w-full"
                 >
-                    <option value="all">Categories</option>
+                    <option value="all">All Categories</option>
                     <option value="smartphones">Smartphones</option>
                     <option value="laptops">Laptops</option>
                     <option value="tablets">Tablets</option>
