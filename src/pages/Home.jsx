@@ -64,14 +64,14 @@ function Home(){
     return(
         <div>
             <section className="bg-gradient-to-r from-[#436EDF] to-blue-200 text-white">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 lg:py-28 text-center">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-20 lg:py-28 text-center">
                     <h1 className="text-xl sm:text-3xl lg:text-6xl text-[#F8FAE5] font-bold">
                         Discover the latest tech
                     </h1>
                     <p className="mt-6 text-sm sm:text-xl text-[#F8FAE5] max-w-2xl mx-auto">
                         Explore the latest gadgets and electronics at prices you'll love.
                     </p>
-                    <Link to="/shop"> <button type="button" className="mt-8 px-2 py-1 bg-[#F8FAE5] text-[#436EDF] rounded-lg font-semibold hover:bg-gray-200 transition">Shop Now</button> </Link>
+                    <Link to="/shop"> <button type="button" className="mt-8 px-2 bg-[#F8FAE5] text-[#436EDF] rounded-lg font-semibold hover:bg-gray-200 transition">Shop Now</button> </Link>
                 </div>
             </section>
 
@@ -80,7 +80,7 @@ function Home(){
                     <h2 className="text-xl font-bold text-gray-900">Categories</h2>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                         {categories.map((cat)=>(
-                            <Link key={cat.value} to={`/shop?category=${cat.value}`} className="bg-gray-100 text-sm mt-4 rounded-xl p-2 sm:p-2 text-center hover:bg-gray-200 transition"> 
+                            <Link key={cat.value} to={`/shop?category=${cat.value}`} className="bg-gray-100 text-sm mt-4 rounded-xl p-2 sm:p-1 text-center hover:bg-gray-200 transition"> 
                                <p className="font-semibold text-[#0D0D7B]">{cat.name}</p>
                             </Link>
                         ))}
