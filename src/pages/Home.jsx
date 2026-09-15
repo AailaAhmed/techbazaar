@@ -78,7 +78,7 @@ function Home(){
             <section className="py-6">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-xl font-bold text-gray-900">Categories</h2>
-                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 lg:gap-8">
                         {categories.map((cat)=>(
                             <Link key={cat.value} to={`/shop?category=${cat.value}`} className="bg-gray-100 mt-4 rounded-xl p-2 sm:p-2 text-center hover:bg-gray-200 transition"> 
                                <p className="font-semibold text-[#0D0D7B]">{cat.name}</p>
@@ -88,7 +88,7 @@ function Home(){
                 </div>
             </section>
 
-            <section className="py-8 bg-gray-100">
+            <section className="py-8 mt-2 bg-gray-100">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <h2 className="text-xl font-bold text-gray-900 mb-4">
                         Featured Products
@@ -100,7 +100,7 @@ function Home(){
                         <p>{error}</p>
                     }
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-4 lg:gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-8">
                             {featured.map((product)=> (
                              
                               <ProductCard
@@ -127,7 +127,7 @@ function Home(){
                     {loading && <p>Loading...</p>}
                     {!loading && error && <p>{error}</p>}
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-4 lg:gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-8">
                             {bestSellers.map((product)=> (
                                 <ProductCard 
                                   key={product.id}
@@ -150,7 +150,7 @@ function Home(){
                         Flash Sale
                     </h2>
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-4 lg:gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
                             {flashSale.map((product)=>(
                                 <ProductCard
                                   key={product.id}
