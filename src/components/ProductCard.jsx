@@ -34,11 +34,11 @@ function handleAddToCart(e){
 
     return(
         
-        <div className="bg-white rounded-xl shadow-md overflow-hidden h-full border border-gray-200 flex flex-col hover:shadow-xl transition">
+        <div className="bg-white rounded-xl shadow-md overflow-hidden h-full border border-gray-200 flex flex-col hover:shadow-xl transition h-56">
             <div>
                 <button type="button" onClick={wishlistToggle} className="text-lg px-3 mt-2"> {wishlisted?<HeartIcon size={18} color="red"/>:<HeartIcon size={18}/>} </button>
             </div>
-            <div className="h-56 overflow-hidden">
+            <div className="h-44 overflow-hidden">
                <Link to={`/product/${id}`}><img src={image} alt={title} className="w-full h-full object-contain" /></Link> 
             </div>
 
