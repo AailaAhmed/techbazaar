@@ -100,7 +100,7 @@ function Home(){
                         <p>{error}</p>
                     }
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-2 lg:gap-8">
                             {featured.map((product)=> (
                              
                               <ProductCard
@@ -127,7 +127,7 @@ function Home(){
                     {loading && <p>Loading...</p>}
                     {!loading && error && <p>{error}</p>}
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-6 lg:gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-2 lg:gap-8">
                             {bestSellers.map((product)=> (
                                 <ProductCard 
                                   key={product.id}
@@ -150,7 +150,7 @@ function Home(){
                         Flash Sale
                     </h2>
                     {!loading && !error && (
-                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
+                        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 sm:gap-2 lg:gap-8">
                             {flashSale.map((product)=>(
                                 <ProductCard
                                   key={product.id}
