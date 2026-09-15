@@ -4,13 +4,13 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Shop from './pages/Shop';
 import ProductDetails from './pages/ProductDetails';
-import Wishlist from './pages/wishlist';
+import Wishlist from './pages/Wishlist';
 import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/cartContext';
-import OrderSuccess from './pages/orderSuccess';
+import OrderSuccess from './pages/OrderSuccess';
 function App() {
   
   return (
