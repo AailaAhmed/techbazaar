@@ -77,7 +77,7 @@ Home → Shop (search/filter/sort) → Product Details → Cart → Checkout →
 ## Notes
 
 - This project uses DummyJSON's public API for product data; cart, wishlist, and orders are simulated using browser `localStorage` (no real backend/payment processing).
-- Built and documented as part of an 8-week internship program, with an accompanying internship report submitted separately.
+- Built and documented as part of an 8-week internship program.
 
 ---
 
