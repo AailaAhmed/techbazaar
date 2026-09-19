@@ -5,6 +5,7 @@ import { getCart,removeFromCart,updateQuantity,getCartTotal } from "../utils/car
 import { useCart } from "../context/cartContext";
 
 
+
 function Cart(){
     const[items,setItems]=useState([]);
     const { refreshCartCount } = useCart();

@@ -20,7 +20,7 @@ function OrderSuccess(){
             <div className="bg-gray-100 rounded-lg w-full py-4 px-2">
              <p className="font-bold text-3xl text-[#0D0D7B] sm:text-xl">Order Placed Successfully </p>
              <p className="text-gray-600 mb-2">Thank you for shopping with TechBazaar</p>
-             <p className="mt-6 text-lg font-bold" >Order#  <span className="font-medium">{Math.floor(Date.now()/1000)}</span></p>
+             <p className="mt-6 text-lg font-bold" >Order#  <span className="font-medium">{order.orderId}</span></p>
              <p className="text-lg font-bold">Total: <span className="font-medium">Rs. {order.total}</span></p>
              
             </div>
@@ -33,6 +33,7 @@ function OrderSuccess(){
                 <p className="mb-2">{order.address}</p>
                 <p className="mb-2">{order.postalCode}</p>
             </div>
+            <Link to="/track-order"><button type="button" className="bg-[#436EDF] text-[#F8FAE5] font-semibold rounded-lg mt-8 p-2 hover:bg-[#2f52b0] transition ">Track Order</button></Link>
 
             <Link to="/shop" className="text-lg flex items-center justify-center text-[#436EDF] hover:underline mt-18 mb-6" >Continue Shopping</Link>
         </div>

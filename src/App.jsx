@@ -9,6 +9,7 @@ import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 import About from './pages/About';
 import Contact from './pages/Contact';
+import OrderTracking from './pages/OrderTracking';
 
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { CartProvider } from './context/cartContext';
@@ -42,6 +43,8 @@ function App() {
             <Route path="/about" element={<About/>}/>
 
             <Route path="/contact" element={<Contact/>} />
+
+            <Route path="/track-order" element={<OrderTracking />} />
 
           </Routes>
         </main>

@@ -38,10 +38,10 @@ function Navbar()
             {isMenuOpen && (
                 <div className="md:hidden pb-4">
                     <div className="flex flex-col gap-3 text-sm">
-                        <Link to="/" className="text-gray-700 hover:text-[#436EDF] py-2">HOME</Link>
-                        <Link to="/shop" className="text-gray-700 hover:text-[#436EDF] py-2">SHOP</Link>
-                        <Link to="/wishlist" className="text-gray-700 hover:text-[#436EDF] py-2">WISHLIST</Link>
-                        <Link to="/cart" className="text-gray-700 hover:text-[#436EDF] py-2">CART </Link>
+                        <Link to="/" onClick={()=> setIsMenuOpen(false)} className="text-gray-700 hover:text-[#436EDF] py-2">HOME</Link>
+                        <Link to="/shop" onClick={()=> setIsMenuOpen(false)} className="text-gray-700 hover:text-[#436EDF] py-2">SHOP</Link>
+                        <Link to="/wishlist" onClick={()=> setIsMenuOpen(false)} className="text-gray-700 hover:text-[#436EDF] py-2">WISHLIST</Link>
+                        <Link to="/cart" onClick={()=> setIsMenuOpen(false)} className="text-gray-700 hover:text-[#436EDF] py-2">CART </Link>
                     </div>
                 </div>)}
 

@@ -51,3 +51,34 @@ export function getCartCount() {
 export function clearCart(){
     localStorage.removeItem(CART_KEY);
 }
+
+
+
+
+
+
+
+const ORDERS_KEY="orders";
+
+export function saveOrder(order){
+    const orders=getOrders();
+    const orderWithId= {
+        ...order,
+        orderId:Math.floor(Date.now()/1000).toString(),
+        status: "Processing",
+        date: new Date().toISOString(),
+    };
+
+    orders.push(orderWithId);
+    localStorage.setItem(ORDERS_KEY,JSON.stringify(orders));
+    return orderWithId;
+}
+
+export function getOrders(){
+    const data=localStorage.getItem(ORDERS_KEY);
+    return data ? JSON.parse(data):[];
+}
+
+export function getOrderById(orderId){
+    return getOrders().find((o)=> o.orderId === orderId);
+}

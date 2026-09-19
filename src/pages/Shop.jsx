@@ -3,10 +3,15 @@ import ProductCard from "../components/ProductCard";
 import { getProductsByCategory } from "../services/productService";
 import { Link } from "react-router-dom";
 import { useSearchParams } from "react-router-dom";
+import { MoveLeft, MoveRight } from "lucide-react";
 
 function Shop(){
     const [products,setProducts]=useState([]);
     const [loading,setLoading]=useState(true);
+
+    const [currentPage,setCurrentPage]=useState(1);
+    const productsPerPage=8;
+
     const [searchParams,setSearchParams]=useSearchParams();
     const [category,setCategory]=useState(searchParams.get("category")||"all");
     const [searchTerm,setSearchTerm]=useState("");
@@ -56,6 +61,14 @@ function Shop(){
     } else if (sortBy === "rating") {
         filteredProducts = [...filteredProducts].sort((a, b) => b.rating - a.rating);
     }
+
+    const totalPages= Math.ceil(filteredProducts.length/productsPerPage);
+    const startIndex= (currentPage-1) * productsPerPage;
+    const paginatedProducts= filteredProducts.slice(startIndex, startIndex + productsPerPage);
+
+    useEffect (()=> {
+        setCurrentPage(1);
+    },[searchTerm,category,sortBy]);
 
     function handleCategoryChange(e){
         const value=e.target.value;
@@ -125,7 +138,7 @@ function Shop(){
 
             {!loading && !error && filteredProducts.length>0 && (
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-                    {filteredProducts.map((product)=> (
+                    {paginatedProducts.map((product)=> (
                         <ProductCard 
                           key={product.id}
                           id={product.id}
@@ -137,6 +150,33 @@ function Shop(){
                     ))}
                 </div>
             )}
+
+            {!loading && !error && filteredProducts.length>0 && (
+
+                <div className="flex items-center justify-center mt-16 mb-8 gap-6">
+                        <button 
+                           onClick={()=> setCurrentPage((p)=> Math.max(1,p-1))}
+                           disabled={currentPage===1}
+                           
+                        >  
+                           < MoveLeft/> 
+                        </button>
+
+                        <span>Page {currentPage} of {totalPages}</span>
+
+                        <button 
+                            onClick={()=> setCurrentPage((p)=> Math.min(totalPages,p+1))}
+                            disabled={currentPage===totalPages}
+                            > 
+                            <MoveRight/> 
+                        </button>
+                        
+                    </div>
+
+            )}
+
+
+
         </main>
     );
 }

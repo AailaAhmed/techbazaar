@@ -2,6 +2,7 @@ import { useState,useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { getCart,clearCart } from "../utils/cart";
 import { useCart } from "../context/cartContext";
+import { saveOrder } from "../utils/cart";
 
 function Checkout(){
     const[items,setItems]=useState([]);
@@ -80,18 +81,19 @@ function Checkout(){
         setErrors(newErrors);
 
         if(Object.keys(newErrors).length===0){
-            clearCart();
-            refreshCartCount();
-            navigate("/order-success",{
-                state: {
-                    total: grandTotal,
+            const order=saveOrder({
+
+                total: grandTotal,
                     email: formData.email,
                     customerName: `${formData.firstName} ${formData.lastName}`,
                     phone: formData.phone,
                     address: formData.address,
                     postalCode: formData.postalCode,
-                },
+
             });
+            clearCart();
+            refreshCartCount();
+            navigate("/order-success", {state: order});
         }
     }
    
