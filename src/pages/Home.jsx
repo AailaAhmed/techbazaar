@@ -166,6 +166,12 @@ function Home(){
                     )}
                 </div>
             </section>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+              <h1 className="text-xl font-bold text-gray-900">Order Tracking</h1>
+             <Link to="/track-order" >
+                <button type="button" className="bg-[#436EDF] text-[#F8FAE5] font-semibold rounded-lg mt-6 mb-8 p-2 hover:bg-[#2f52b0] transition ">Track Order</button>
+             </Link>
+            </div>
         
         </div>
 
