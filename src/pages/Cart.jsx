@@ -17,7 +17,7 @@ function Cart(){
     },[]);
 
     useEffect(() => {
-     document.title = "Shop | TechBazaar";
+     document.title = "Cart | TechBazaar";
     }, []);
 
     function handleRemove(id){

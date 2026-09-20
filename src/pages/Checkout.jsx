@@ -22,7 +22,13 @@ function Checkout(){
     useEffect (()=>{
        setItems(getCart());
     },[]);
-    
+
+
+     useEffect(() => {
+     document.title = "Checkout | TechBazaar";
+    }, []);
+
+
     function validateForm(){
         const newErrors={};
 

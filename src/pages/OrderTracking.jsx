@@ -6,6 +6,10 @@ function OrderTracking() {
   const [order, setOrder] = useState(null);
   const [searched, setSearched] = useState(false);
 
+   useEffect(() => {
+       document.title = "Order Tracking | TechBazaar";
+      }, []);
+
   function handleSearch(e) {
     e.preventDefault();
     const found = getOrderById(orderId.trim());
