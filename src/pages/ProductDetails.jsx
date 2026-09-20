@@ -12,6 +12,14 @@ function ProductDetails(){
     const[loading,setLoading]=useState(true);
     const[error,setError]=useState("");
 
+
+    useEffect(() => {
+      if (product) {
+        document.title = `${product.title} | TechBazaar`;
+       }
+    }, [product]);
+
+
     useEffect (() => {
         async function fetchProduct() {
             try {

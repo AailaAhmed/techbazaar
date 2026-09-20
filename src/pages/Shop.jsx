@@ -51,6 +51,10 @@ function Shop(){
 
     },[] );
 
+    useEffect(() => {
+       document.title = "Shop | TechBazaar";
+    }, []);
+
 
     let filteredProducts=products.filter((p)=> category==="all" || p.category===category).filter((p)=> p.title.toLowerCase().includes(searchTerm.toLowerCase()));
 
