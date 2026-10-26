@@ -74,7 +74,7 @@ function handleAddToCart() {
                     <button type="button" onClick={handleAddToCart} className="bg-[#436EDF] w-full mt-auto py-2.5 text-[#F8FAE5] rounded-lg font-semibold hover:bg-[#2f52b0] transition ">Add to Cart</button>
                     {showMessage && <p className="text-xs text-center text-green-600">Added To Cart!</p>}
 
-                    <p className="py-1"> <span className="font-bold text-lg" >Category: </span><span className="text-sm">{product.category}</span></p>
+                    <p className="py-1"> <span className="font-bold text-lg" >Category: </span><span className="text-sm">{product.category.name}</span></p>
    
                     <div className="py-2 text-sm">
                         <span className="font-bold text-lg">Description: </span>{product.description}

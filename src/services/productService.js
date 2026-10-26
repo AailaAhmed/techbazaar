@@ -1,3 +1,4 @@
+const API_URL = "http://localhost:8000/api";
 const BASE_URL= "https://dummyjson.com";
 export async function getAllProducts(limit=50,skip=0) {
     const result= await fetch(`${BASE_URL}/products?limit=${limit}&skip=${skip}`);
@@ -6,7 +7,7 @@ export async function getAllProducts(limit=50,skip=0) {
 }
 
 export async function getProductById(id) {
-    const result =await fetch(`${BASE_URL}/products/${id}`);
+    const result =await fetch(`${API_URL}/products/${id}/`);
     if (!result.ok) throw new Error("Failed to fetch products");
     return result.json();
     
