@@ -25,3 +25,15 @@ export async function getCategories() {
     return result.json();
     
 }
+
+export async function getProducts({page=1,search="",category="all", ordering=""}={}){
+    const params= new URLSearchParams({page});
+    if (search) params.set("search",search);
+    if (category!=="all") params.set("category__slug",category);
+    if (ordering) params.set("ordering",ordering);
+    const result=await fetch (`${API_URL}/products/?${params}`);
+    if (!result.ok) throw new Error("Failed to fetch products");
+    return result.json();
+
+
+}

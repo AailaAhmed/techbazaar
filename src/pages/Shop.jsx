@@ -1,45 +1,45 @@
 import { useState,useEffect } from "react";
 import ProductCard from "../components/ProductCard";
-import { getProductsByCategory } from "../services/productService";
-import { Link } from "react-router-dom";
-import { useSearchParams } from "react-router-dom";
+import { getProducts } from "../services/productService";
+import { Link, useSearchParams } from "react-router-dom";
 import { MoveLeft, MoveRight } from "lucide-react";
 
+const productsPerPage=8;
+const SORT_MAP = { "price-low": "price", "price-high": "-price", rating: "-rating" };
+
 function Shop(){
+
     const [products,setProducts]=useState([]);
+    const [count, setCount] = useState(0);
     const [loading,setLoading]=useState(true);
+    const [error,setError]=useState("");
 
     const [currentPage,setCurrentPage]=useState(1);
-    const productsPerPage=8;
-
     const [searchParams,setSearchParams]=useSearchParams();
     const [category,setCategory]=useState(searchParams.get("category")||"all");
     const [searchTerm,setSearchTerm]=useState("");
     const [sortBy,setSortBy]=useState("default");
-    const [error,setError]=useState("");
+
+    const totalPages = Math.max(1, Math.ceil(count / productsPerPage));
+    useEffect (()=> {
+        setCurrentPage(1);
+    },[searchTerm,category,sortBy]);
+
 
     useEffect(()=>{
         async function fetchProducts() {
             try {
                 setLoading(true);
                 setError("");
-                const[smartphones, laptops,tablets, accssories] =await Promise.all ([
-                    getProductsByCategory("smartphones"),
-                    getProductsByCategory("laptops"),
-                    getProductsByCategory("tablets"),
-                    getProductsByCategory("mobile-accessories"),
+                const data = await getProducts({
+                    page:currentPage,
+                    search: searchTerm,
+                    category,
+                    ordering: SORT_MAP[sortBy]||""
+                });
 
-                ]);
-
-                const allProducts=[
-                    ...smartphones.products,
-                    ...laptops.products,
-                    ...tablets.products,
-                    ...accssories.products,
-
-                ];
-
-                setProducts(allProducts);
+                setProducts(data.results);
+                setCount(data.count);
 
             } catch (err) {
                 setError("Failed to load products. Please try again.");
@@ -49,30 +49,12 @@ function Shop(){
         }
         fetchProducts();
 
-    },[] );
+    },[currentPage,searchTerm,category,sortBy] );
 
     useEffect(() => {
        document.title = "Shop | TechBazaar";
     }, []);
 
-
-    let filteredProducts=products.filter((p)=> category==="all" || p.category===category).filter((p)=> p.title.toLowerCase().includes(searchTerm.toLowerCase()));
-
-    if(sortBy==="price-low"){
-        filteredProducts=[...filteredProducts.sort((a,b)=> a.price - b.price)];
-    } else if(sortBy==="price-high"){
-        filteredProducts=[...filteredProducts.sort((a,b)=> b.price - a.price)];
-    } else if (sortBy === "rating") {
-        filteredProducts = [...filteredProducts].sort((a, b) => b.rating - a.rating);
-    }
-
-    const totalPages= Math.ceil(filteredProducts.length/productsPerPage);
-    const startIndex= (currentPage-1) * productsPerPage;
-    const paginatedProducts= filteredProducts.slice(startIndex, startIndex + productsPerPage);
-
-    useEffect (()=> {
-        setCurrentPage(1);
-    },[searchTerm,category,sortBy]);
 
     function handleCategoryChange(e){
         const value=e.target.value;
@@ -134,15 +116,15 @@ function Shop(){
                 </div>
             )}
 
-            {!loading && !error && filteredProducts.length===0 && (
+            {!loading && !error && products.length===0 && (
                 <div className="text-center py-12">
                     <p className="text-gray-600">No Products Found.</p>
                 </div>
             )}
 
-            {!loading && !error && filteredProducts.length>0 && (
+            {!loading && !error && products.length>0 && (
                 <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-                    {paginatedProducts.map((product)=> (
+                    {products.map((product)=> (
                         <ProductCard 
                           key={product.id}
                           id={product.id}
@@ -155,7 +137,7 @@ function Shop(){
                 </div>
             )}
 
-            {!loading && !error && filteredProducts.length>0 && (
+            {!loading && !error && products.length>0 && (
 
                 <div className="flex items-center justify-center mt-16 mb-8 gap-6">
                         <button 

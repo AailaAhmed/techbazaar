@@ -1,6 +1,6 @@
 import { useState,useEffect } from "react";
 import ProductCard from "../components/ProductCard";
-import { getProductsByCategory} from "../services/productService";
+import { getProducts} from "../services/productService";
 import { Link } from "react-router-dom";
 
 const categories=[
@@ -42,14 +42,14 @@ function Home(){
             
             ];
         
-            setFeatured(allProducts.slice(0,4));
-
-
-            const topRated=allProducts.filter((p)=>p.rating>=4.5).slice(0,4);
-            setBestSellers(topRated);
-
-            const onSale = allProducts.filter((p) => p.discountPercentage > 10).slice(0, 4);
-            setFlashSale(onSale)
+            const [feat, top, sale] = await Promise.all([
+                getProducts(),
+                getProducts({ ordering: "-rating" }),
+                getProducts({ ordering: "-discount_percentage" }),
+]);
+            setFeatured(feat.results.slice(0,4));
+            setBestSellers(top.results.slice(0,4));
+            setFlashSale(sale.results.slice(0,4))
             
         } catch (err) {
             setError("Failed to load products.")
